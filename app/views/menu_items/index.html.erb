@@ -1,0 +1,13 @@
+<h1 class="page-header">Our Food</h1>
+<p class="lead">
+  Tacos so yummy, you'll slap yo mama.
+</p>
+<% @items.in_groups_of(4) do |group| %>
+  <div class="row">
+    <% group.each do |menu_item| %>
+      <div class="col-sm-3">
+        <%= menu_item.name %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
