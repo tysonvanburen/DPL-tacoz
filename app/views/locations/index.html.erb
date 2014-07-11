@@ -1,4 +1,11 @@
 <h1>Our Locations</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <div id="full-map">
+      
+    </div>
+  </div>
+</div>
 <% @locations.in_groups_of(4, false) do |group| %>
   <div class="row">
     <% group.each do |location| %>
