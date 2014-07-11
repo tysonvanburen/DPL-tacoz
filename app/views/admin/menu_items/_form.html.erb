@@ -1,0 +1,8 @@
+<%= form_for([:admin, @menu_item]) do |f| %>
+  <%= f.text_field(:name, placeholder: 'Name') %>
+  <%= f.text_field(:price, placeholder: 'Price') %>
+  <%= f.text_area(:description, placeholder: 'Description') %>
+  <%= f.check_box(:vegetarian) %><%= f.label(:vegetarian) %>
+  <%= f.file_field(:picture) %><%= f.label(:picture) %>
+  <%= f.submit('Send this to the server, yo') %>
+<% end %>
