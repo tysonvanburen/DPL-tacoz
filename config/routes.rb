@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/contact' => 'site#contact'
   post '/contact-submit' => 'site#contact_submit', as: :submit_contact
   resources :menu_items, only: [:index, :show], path: 'our-food'
+  resources :locations, only: [:index, :show]
 
   namespace :admin do
     get '/' => 'base#index'
