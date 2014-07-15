@@ -1,0 +1,7 @@
+<h1>Locations</h1>
+<a href="<%= new_admin_location_path %>">Add new location</a>
+<% @locations.each do |location| %>
+<p>
+  <%= link_to(location.address, edit_admin_location_path(location)) %>
+</p>
+<% end %>

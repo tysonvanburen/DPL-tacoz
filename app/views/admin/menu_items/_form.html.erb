@@ -1,8 +1,33 @@
-<%= form_for([:admin, @menu_item]) do |f| %>
-  <%= f.text_field(:name, placeholder: 'Name') %>
-  <%= f.text_field(:price, placeholder: 'Price') %>
-  <%= f.text_area(:description, placeholder: 'Description') %>
-  <%= f.check_box(:vegetarian) %><%= f.label(:vegetarian) %>
-  <%= f.file_field(:picture) %><%= f.label(:picture) %>
-  <%= f.submit('Send this to the server, yo') %>
+<%= nested_form_for([:admin, @menu_item]) do |menu_item_form| %>
+  <div class="form-group">
+    <%= menu_item_form.text_field(:name, placeholder: 'Name', class: 'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= menu_item_form.text_field(:price, placeholder: 'Price', class: 'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= menu_item_form.text_area(:description, placeholder: 'Description', class: 'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= menu_item_form.check_box(:vegetarian) %><%= menu_item_form.label(:vegetarian) %>
+  </div>
+  <div class="form-group">
+    <%= menu_item_form.label(:picture) %>
+    <%= menu_item_form.file_field(:picture) %>
+  </div>
+
+  <p><%= menu_item_form.link_to_add('Add Ingredient', :ingredients) %></p>
+  <%= menu_item_form.fields_for(:ingredients) do |ingredient_form| %>
+    <div class="form-group">
+      <%= ingredient_form.text_field(:name, placeholder: 'Name') %>
+    </div>
+    <div class="form-group">
+      <%= ingredient_form.number_field(:calories) %>
+    </div>
+    <p><%= ingredient_form.link_to_remove('Remove Ingredient') %></p>
+  <% end %>
+
+  <div class="form-group">
+    <%= menu_item_form.submit('Send this to the server, yo') %>
+  </div>
 <% end %>
