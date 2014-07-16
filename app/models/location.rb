@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search, against: [:street_address, :city, :state]
+  # pg_search_scope :search, against: [:street_address, :city, :state]
+  multisearchable against: [:street_address, :city, :state]
 
   geocoded_by :address
   after_validation :geocode
@@ -15,6 +16,10 @@ class Location < ActiveRecord::Base
   def address
     # 1234 Some St. Apt 4, Salt Lake City, UT 84123, US
     "#{street_address} #{street_address2}, #{city}, #{state} #{zip}, US"
+  end
+
+  def name
+    address
   end
 
   private

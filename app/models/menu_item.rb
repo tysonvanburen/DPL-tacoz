@@ -1,12 +1,10 @@
 class MenuItem < ActiveRecord::Base
   include PgSearch
-  # multisearchable against: [:name, :description], associated_against: {
+  multisearchable against: [:name, :description]
+
+  # pg_search_scope :search, against: [:name, :description], associated_against: {
   #   ingredients: [:name]
   # }
-
-  pg_search_scope :search, against: [:name, :description], associated_against: {
-    ingredients: [:name]
-  }
 
   mount_uploader :picture, MenuItemPictureUploader
   has_many :ingredients
@@ -22,6 +20,10 @@ class MenuItem < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+
+  def ingredient_names
+    ingredients.pluck(:name).join(', ')
   end
 
   private
