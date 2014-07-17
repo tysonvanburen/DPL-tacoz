@@ -52,6 +52,18 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
+    elasticsearch (1.0.4)
+      elasticsearch-api (= 1.0.4)
+      elasticsearch-transport (= 1.0.4)
+    elasticsearch-api (1.0.4)
+      multi_json
+    elasticsearch-model (0.1.4)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-transport (1.0.4)
+      faraday
+      multi_json
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -62,6 +74,7 @@ GEM
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
     geocoder (1.2.2)
+    hashie (3.2.0)
     hike (1.2.3)
     http (0.6.1)
       http_parser.rb (~> 0.6.0)
@@ -92,10 +105,6 @@ GEM
     naught (1.0.0)
     nested_form (0.3.2)
     pg (0.17.1)
-    pg_search (0.7.6)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     polyglot (0.3.5)
     pry (0.10.0)
       coderay (~> 1.1.0)
@@ -188,6 +197,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  elasticsearch-model
   ffaker
   font-awesome-sass
   geocoder
@@ -197,7 +207,6 @@ DEPENDENCIES
   mini_magick
   nested_form
   pg
-  pg_search
   pry-rails
   rails (= 4.1.1)
   rails_12factor

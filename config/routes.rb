@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :menu_items, only: [:index, :show], path: 'our-food'
   resources :locations, only: [:index, :show]
   get '/search' => 'search_results#index'
+  get '/location-search' => 'search_results#location_search_index'
 
   namespace :admin do
     get '/' => 'base#index'

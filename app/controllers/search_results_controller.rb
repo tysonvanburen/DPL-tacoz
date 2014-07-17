@@ -1,8 +1,11 @@
 class SearchResultsController < ApplicationController
 
   def index
-    # @menu_items = MenuItem.search(params[:q])
-    # @locations = Location.search(params[:q])
-    @results = PgSearch.multisearch(params[:q]).collect(&:searchable)
+    @results = MenuItem.search(params[:q])
+  end
+
+  def location_search_index
+    params[:coordinates] = [params[:longitude], params[:latitude]] unless params[:latitude].blank? || params[:longitude].blank?
+    @results = Location.search(params)
   end
 end
